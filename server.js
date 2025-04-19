@@ -24,7 +24,7 @@ mongoose.connect(mongoURI, {
 const userMembershipSchema = new mongoose.Schema({
   robloxUsername: { type: String, required: true },
   discordId: { type: String, required: true },
-  plan: { type: String, default: 'Free Plan' },
+  membershipLevel: { type: String, default: 'Free Plan' },
 });
 
 const UserMembership = mongoose.model('UserMembership', userMembershipSchema);
@@ -42,7 +42,7 @@ app.post('/api/submit-form', async (req, res) => {
   const newUser = new UserMembership({
     robloxUsername,
     discordId,
-    plan: 'Free Plan', // Default plan
+    membershipLevel: 'Free Plan', // Default plan
   });
 
   try {
